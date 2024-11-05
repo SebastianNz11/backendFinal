@@ -38,8 +38,9 @@ export const obtenerProyectoPorId = async (req, res) => {
 // Actualizar un proyecto
 export const actualizarProyecto = async (req, res) => {
   try {
+    const { id_proyecto} = req.params;
     const [updated] = await Proyecto.update(req.body, {
-      where: { id_proyecto: req.params.id }
+      where: { id_proyecto }
     });
     if (updated) {
       const proyecto = await Proyecto.findByPk(req.params.id);
