@@ -12,7 +12,7 @@ app.use(morgan("dev"));
 app.use(routesProyecto);
 app.use(
   cors({
-    origin: ["http://localhost:5173"],
+    origin: ["https://backendfinal-3.onrender.com"],
     methods: ["GET", "PATCH", "POST", "DELETE", "PUT"],
   })
 );
