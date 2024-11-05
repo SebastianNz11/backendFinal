@@ -55,8 +55,9 @@ export const actualizarProyecto = async (req, res) => {
 // Eliminar un proyecto
 export const eliminarProyecto = async (req, res) => {
   try {
+    const { id_proyecto} = req.params;
     const deleted = await Proyecto.destroy({
-      where: { id_proyecto: req.params.id }
+      where: { id_proyecto }
     });
     if (deleted) {
       res.json({ mensaje: 'Proyecto eliminado' });
@@ -64,6 +65,7 @@ export const eliminarProyecto = async (req, res) => {
       res.status(404).json({ error: 'Proyecto no encontrado' });
     }
   } catch (error) {
-    res.status(500).json({ error: 'Error al eliminar el proyecto' });
+    res.status(500).json({ error: error.message });
+
   }
 };
