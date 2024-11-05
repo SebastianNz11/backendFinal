@@ -1,6 +1,8 @@
 import express from "express";
 import { sequelize } from "./database/database.js";
 import "dotenv/config";
+import cors from 'cors';
+
 import morgan from "morgan";
 import routesProyecto from "./routes/proyecto.routes.js";
 
@@ -8,7 +10,12 @@ const app = express();
 app.use(express.json());
 app.use(morgan("dev"));
 app.use(routesProyecto);
-
+app.use(
+  cors({
+    origin: ["http://localhost:5173"],
+    methods: ["GET", "PATCH", "POST", "DELETE", "PUT"],
+  })
+);
 const main = () => {
   app.listen(process.env.PORT, async () => {
     try {
