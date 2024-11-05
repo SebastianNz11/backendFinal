@@ -105,6 +105,8 @@ export const realizarPago = async (req, res) => {
         },
       ],
       mode: "payment",
+      success_url: "http://localhost:4000/success",
+      cancel_url: "http://localhost:4000/cancel", 
     });
 
     return res.json({ id: session.id });
