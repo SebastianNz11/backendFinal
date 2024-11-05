@@ -5,6 +5,7 @@ import {
   obtenerProyectoPorId,
   actualizarProyecto,
   eliminarProyecto,
+  realizarPago
 } from "../controllers/proyecto.controller.js";
 
 const router = Router();
@@ -18,5 +19,7 @@ router.get("/proyecto/:id_proyecto", obtenerProyectoPorId);
 router.put("/proyecto/:id_proyecto", actualizarProyecto);
 
 router.delete("/proyecto/:id_proyecto", eliminarProyecto);
+
+app.post('/proyecto/pago', realizarPago);
 
 export default router;
